@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Main from './screens/Main';
 import NuevoScreen from './screens/NuevoScreen';
 import BuscarScreen from './screens/BuscarScreen';
+import Listado from './screens/Listado';
 //import Desarrollador from './screens/desarrollador';
 
 
@@ -16,9 +17,12 @@ const NavStack = createStackNavigator({
         screen: NuevoScreen,
     },
     BuscarScreen: {
-        screen: BuscarScreen,
-        
-    }
+        screen: BuscarScreen,  
+    },
+    Listado: {
+        screen: Listado,  
+    },
+
 });
 
 const Navegador = createAppContainer(NavStack);

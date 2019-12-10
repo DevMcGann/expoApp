@@ -10,26 +10,30 @@ const Main = ({navigation}) => {
     
     return ( 
     
-        <View style={{backgroundColor:'black', flex:1}}>
-            <View >
+        <View style={{flex:1,backgroundColor:"black"}}>
+            <View>
                 <ImageBackground
                 resizeMode={'stretch'}
-                style={{ flex: 1, height: 320, width: anchoDispositivo }}
+                style={{ height: 320, width: anchoDispositivo }}
                 source={require('../fiesta.jpg')}
                 />
             </View>
             
             <View>
-                <TouchableOpacity  onPress={()=> navigation.navigate('NuevoScreen')} style={{marginBottom:220, backgroundColor:'green'}}>
+                <TouchableOpacity  onPress={()=> navigation.navigate('NuevoScreen')} style={{marginBottom:25, marginTop:25, backgroundColor:'green'}}>
                     <Text style={{textAlign:'center', color:'white', fontSize:35}}>Nuevo Invitado</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity  onPress={()=> navigation.navigate('BuscarScreen')} style={{marginBottom:1, backgroundColor:'green'}}>
+                <TouchableOpacity  onPress={()=> navigation.navigate('BuscarScreen')} style={{ backgroundColor:'green'}}>
                     <Text style={{textAlign:'center', color:'white', fontSize:35}}>Buscar DNI</Text>
                 </TouchableOpacity>
-            </View>
 
+                <TouchableOpacity  onPress={()=> navigation.navigate('Listado')} style={{marginTop:25, backgroundColor:'green'}}>
+                    <Text style={{textAlign:'center', color:'white', fontSize:35}}>Ver Listado</Text>
+                </TouchableOpacity>
+            </View>
         </View>
+       
      );
 }
  
