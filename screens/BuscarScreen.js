@@ -19,7 +19,7 @@ const BuscarScreen = () => {
     }
     useEffect( ()=>{
         consultarAPI();
-    }, [invitados]);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
+    }, []);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
     
 
 
@@ -74,14 +74,9 @@ const BuscarScreen = () => {
                 <Text>{invitado.nombre ? invitado.nombre : "nombre"} - {invitado.apellido ? invitado.apellido : "apellido"}</Text>
                 <Text>{invitado ? invitado.dni : "Dni"}</Text>
                 <View  style={{ backgroundColor: invitado.presente ? "green" : "red" }} >
-                    <Button  onClick={() => eliminarInvitado(invitado._id)}>
-                        Eliminar Invitado
-                    </Button>
-
-
-                    <Button onClick={() => editarPresente(invitado._id)} >
-                        {invitado.presente ? "Presente" : "Ausente"}
-                    </Button>
+                  
+                    <Button  onPress={() => eliminarInvitado(invitado._id)} title="Eliminar Invitado"/>
+                    <Button onPress={() => editarPresente(invitado._id)} title={invitado.presente ? "Presente" : "Ausente"}/>
                 </View>
             </View>
 

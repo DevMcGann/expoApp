@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import clienteAxios from '../Axios';
-import Swal from 'sweetalert2';
 import {Text, View, TouchableOpacity,TextInput } from 'react-native';
 
 const NuevoScreen = () => {
@@ -26,24 +25,7 @@ const NuevoScreen = () => {
         e.preventDefault();
 
         clienteAxios.post('/nuevo_invitado', invitado)
-        .then(res => {
-           if(res.data.code === 11000){
-               Swal.fire({
-                   type:'error',
-                   title:"Hubo un error!",
-                   text:"Ese DNI ya está registrado"
-               }) //<--Mail ya existe 11000
-           }else{
-              Swal.fire(
-                  'Se Agregó el nuevo invitado',
-                  res.data.mensaje,
-                  'success'
-              );
-           }
-           //redirect
-           history.push('/');
-
-        });
+        alert("Invitado agregado")
     }
 
     return (
@@ -54,9 +36,12 @@ const NuevoScreen = () => {
             </View>
 
             <View style={{flex:2}}>
-                <TextInput placeholder="Nombre" value="nombre" name="nombre" style={{textAlign:'center', marginBottom:25, fontSize:18}} onPress={actualizarState}/>
-                <TextInput placeholder="Apellido"  value="apellido" name="apellido" style={{textAlign:'center', marginBottom:25, fontSize:18}} onPress={actualizarState}/>
-                <TextInput placeholder="DNI" value="dni" name="dni" style={{textAlign:'center', marginBottom:25, fontSize:18}} onPress={actualizarState}/>
+                <TextInput placeholder="Nombre"  name="nombre"
+                 style={{textAlign:'center', marginBottom:25, fontSize:18}} onChange={actualizarState}/>
+                <TextInput placeholder="Apellido"  name="apellido" 
+                style={{textAlign:'center', marginBottom:25, fontSize:18}} onChangeText={actualizarState}/>
+                <TextInput placeholder="DNI"  name="dni" 
+                style={{textAlign:'center', marginBottom:25, fontSize:18}} onChangeText={actualizarState}/>
             </View>
 
             <View style={{flex:.2}}>

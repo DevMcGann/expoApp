@@ -9,22 +9,7 @@ const Invitadoo = ({ invitado }) => {
 
     //eliminar cliente
   const eliminarInvitado = idInvitado => {
-    Swal.fire({
-      title: "Estas seguro que deseas eliminar?",
-      text: "No podrás revertir esta acción",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminar!",
-      cancelButtonText: "Cancelar"
-    }).then(result => {
-      if (result.value) {
-        clienteAxios.delete(`/invitados/${idInvitado}`).then(res => {
-          Swal.fire("Eliminado!", res.data.mensaje, "success");
-        });
-      }
-    });
+        clienteAxios.delete(`/invitados/${idInvitado}`)
   };
 
   const editarPresente = async idInvitado => {
