@@ -10,13 +10,18 @@ const Listado = () => {
 
      //query a la api
      const consultarAPI = async () =>{
-         const invitadosConsulta = await clienteAxios.get('/invitados')  
-         guardarInvitados(invitadosConsulta.data);
+         try {
+            const invitadosConsulta = await clienteAxios.get('/invitados')  
+            guardarInvitados(invitadosConsulta.data);    
+         } catch (error) {
+            alert("Hubo algún error consultando la API") 
+         }
+         
      }
  
      useEffect( ()=>{
          consultarAPI();
-     }, []);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
+     }, [invitados]);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
 
      
 

@@ -19,7 +19,7 @@ const Main = ({navigation}) => {
                 />
             </View>
             
-            <View>
+            <View style={{padding: 20}}>
                 <TouchableOpacity  onPress={()=> navigation.navigate('NuevoScreen2')} style={{marginBottom:25, marginTop:25, backgroundColor:'green'}}>
                     <Text style={{textAlign:'center', color:'white', fontSize:35}}>Nuevo Invitado</Text>
                 </TouchableOpacity>

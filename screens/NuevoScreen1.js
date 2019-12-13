@@ -31,9 +31,8 @@ class NuevoScreen2 extends React.Component {
             dni:this.state.dni,
             presente:false
         }
-        alert(JSON.stringify(objetoInvitado))
-       alert("Invitado agregado")
-       clienteAxios.post('/nuevo_invitado', objetoInvitado)
+        alert("Invitado agregado")
+        clienteAxios.post('/nuevo_invitado', objetoInvitado)
 
     }
 
@@ -42,7 +41,7 @@ class NuevoScreen2 extends React.Component {
             <View style={{flex:.5}}>
 
             <View style={{flex:1}}>
-                <Text style={{textAlign:'center', marginTop:25, fontSize:18}}>Nuevo Invitado</Text>
+                <Text style={{textAlign:'center', marginTop:25, fontSize:30, fontWeight:'bold'}}>Nuevo Invitado</Text>
             </View>
 
             <View style={{flex:2}}>
@@ -56,10 +55,9 @@ class NuevoScreen2 extends React.Component {
                 style={{textAlign:'center', marginBottom:25, fontSize:18}} onChangeText={(dni)=>{this.setearDni(dni)}}/>
             </View>
 
-            <View style={{flex:.2}}>
-                <TouchableOpacity>
-                    <Text style={{textAlign:'center', marginBottom:25, fontSize:20, backgroundColor:'green', color:'white'}} 
-                    onPress={this.agregarinvitado}>
+            <View style={{flex:.5, padding:20}}>
+                <TouchableOpacity  onPress={this.agregarinvitado}>
+                    <Text style={{textAlign:'center', marginBottom:25, fontSize:20, backgroundColor:'green', color:'black', height:60, justifyContent:'center'}}>
                     Agregar Invitado</Text>
                 </TouchableOpacity>
             </View>

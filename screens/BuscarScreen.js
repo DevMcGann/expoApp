@@ -35,20 +35,28 @@ const BuscarScreen = () => {
 
     // cuando apreta Buscar
     const buscarInvitado = e => {
-        e.preventDefault();
-        let filtrado = invitados.filter(function (uninvitado){
-            return uninvitado.dni === buscarDni
-        })
-        if (filtrado) {
-        setInvitado(filtrado[0])
-        setHayResultado(true)
-        setBuscarDni("")
-        }else{
-            alert("No se encontró ese Dni")
-            setBuscarDni("")
+        try {
+            e.preventDefault();
             setHayResultado(false)
-            
+            let filtrado = invitados.filter(function (uninvitado){
+                return uninvitado.dni === buscarDni
+            })
+            if (filtrado[0]) {
+            setInvitado(filtrado[0])
+            //alert(JSON.stringify(filtrado[0].dni))
+            //alert("indice 0 "+ JSON.stringify(filtrado[0]))
+            setHayResultado(true)
+            setBuscarDni("")
+            }else{
+                setHayResultado(false)
+                alert("No se encontró ese Dni")
+                setBuscarDni("")
+                   
+            }    
+        } catch (error) {
+            alert("error")
         }
+        
     }
 
     //eliminar o marcar presente
@@ -98,9 +106,15 @@ const BuscarScreen = () => {
 
            {hayResultado ? 
            <View style={{flex:1}}>
-                <Text style={{textAlign:'center', fontSize:25, marginBottom:20}}>{hayResultado ? invitado.nombre : "nombre"} - {hayResultado ? invitado.apellido : "apellido"}</Text>
-                <Text style={{textAlign:'center', fontSize:25, marginBottom:20, color:'purple', fontWeight:'bold'}}>{hayResultado ? invitado.dni : "Dni"}</Text>
-               <View  style={{ backgroundColor: invitado.presente ? "green" : "red", flex:.5,  justifyContent:'space-around'  }} >
+                <Text style={{textAlign:'center', fontSize:25, marginBottom:20}}>
+                    {hayResultado==true ? invitado.nombre : "nombre"} - {hayResultado==true ? invitado.apellido : "apellido"}
+                </Text>
+
+                <Text style={{textAlign:'center', fontSize:25, marginBottom:20, color:'purple', fontWeight:'bold'}}>
+                    {hayResultado ? invitado.dni : "Dni"}
+                </Text>
+               
+               <View  style={{ backgroundColor: invitado.presente ? "green" : "red", flex:.2,  justifyContent:'space-between', padding:20 }} >
                     <Button  onPress={() => eliminarInvitado(invitado._id)} title="Eliminar Invitado"/>
                     <Button onPress={() => editarPresente(invitado._id)} title={invitado.presente ? "Presente" : "Ausente"} />
                 </View>
