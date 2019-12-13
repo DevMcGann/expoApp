@@ -20,7 +20,7 @@ const Main = ({navigation}) => {
             </View>
             
             <View>
-                <TouchableOpacity  onPress={()=> navigation.navigate('NuevoScreen')} style={{marginBottom:25, marginTop:25, backgroundColor:'green'}}>
+                <TouchableOpacity  onPress={()=> navigation.navigate('NuevoScreen2')} style={{marginBottom:25, marginTop:25, backgroundColor:'green'}}>
                     <Text style={{textAlign:'center', color:'white', fontSize:35}}>Nuevo Invitado</Text>
                 </TouchableOpacity>
 

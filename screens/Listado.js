@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {Text, View } from 'react-native';
+import {Text, View, ScrollView } from 'react-native';
 import clienteAxios from '../Axios';
 import Invitado from '../componentes/Invitado';
 
@@ -16,11 +16,12 @@ const Listado = () => {
  
      useEffect( ()=>{
          consultarAPI();
-     }, [invitados]);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
+     }, []);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
 
      
 
     return ( 
+        <ScrollView style={{flex:1}}>
         <View style={{flex:1}}>
             {invitados.map(invitado => ( 
                     <Invitado
@@ -29,6 +30,7 @@ const Listado = () => {
                     />
             ))}
         </View>
+        </ScrollView>
      );
 }
  

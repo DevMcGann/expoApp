@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, TouchableOpacity } from 'react-native';
 import clienteAxios from '../Axios';
-import Swal from "sweetalert2";
+
 
 const Invitadoo = ({ invitado }) => {
     const { _id, nombre, apellido, dni } = invitado;
@@ -28,17 +28,19 @@ const Invitadoo = ({ invitado }) => {
   };
 
     return ( 
-        <View style={{borderStyle:'solid', borderWidth:5, borderColor:'green', flex:1}}>
+        <View style={{borderStyle:'solid', borderWidth:10, borderColor:'green', flex:1}}>
             <View>
-                <Text>{nombre} {apellido}</Text>
-                <Text>{dni}</Text>
+                <Text style={{textAlign:'center', fontWeight:'bold', fontSize:15}}>{nombre} {apellido}</Text>
+                <Text style={{textAlign:'center', fontWeight:'bold', fontSize:15}}>{dni}</Text>
             </View>
             <View>
                 <TouchableOpacity onPress={() => editarPresente(_id)}>
-                    <Text style={{ backgroundColor:  invitado.presente ? "green" : "red" }}>{Invitadoo.presente? "Presente" : "Ausente"}</Text>
+                    <Text style={{ backgroundColor:  invitado.presente ? "green" : "red", textAlign:'center', color:'white', fontSize:20 }}>
+                      {Invitadoo.presente? "Presente" : "Ausente"}
+                    </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => eliminarInvitado(_id)}>
-                    <Text>Eliminar</Text>
+                    <Text  style={{textAlign:'center'}}>Eliminar</Text>
                 </TouchableOpacity>
             </View>
         </View>
