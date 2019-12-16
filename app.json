@@ -1,17 +1,19 @@
 {
   "expo": {
     "name": "FiestaRebeGime",
-    "slug": "fiestarebegime",
+    "slug": "Fiestarebegime",
     "privacy": "public",
+    "icon": "./assets/icono.png",
     "sdkVersion": "35.0.0",
+
+    "android": {
+      "package":"com.devmcgann.Fiestarebegime"
+    },
     "platforms": [
-      "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
