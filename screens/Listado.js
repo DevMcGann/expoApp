@@ -8,22 +8,35 @@ const Listado = () => {
      //State
      const [invitados,guardarInvitados] = useState([]);
 
-     //query a la api
-     const consultarAPI = async () =>{
-         try {
-            const invitadosConsulta = await clienteAxios.get('/invitados')  
-            guardarInvitados(invitadosConsulta.data);    
-         } catch (error) {
-            alert("Hubo algún error consultando la API") 
-         }
-         
-     }
- 
-     useEffect( ()=>{
-         consultarAPI();
-     }, [invitados]);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
-
      
+
+    useEffect(() => {
+        let cancelado = false;
+
+        //query a la api
+        const consultarAPI = async () => {
+            try {
+                const invitadosConsulta = await clienteAxios.get('/invitados')
+                if (!cancelado) {
+                guardarInvitados(invitadosConsulta.data);
+                }
+            } catch (error) {
+                if (!cancelado){
+                alert("Hubo algún error consultando la API")
+                }
+            }
+
+        };//consultarapi
+
+        consultarAPI();
+
+        return() => {
+            cancelado=true;
+        }
+        
+    }, [invitados]);  //cuando invitados cambie, vuelve a ejecutar consultarAPI
+
+
 
     return ( 
         <ScrollView style={{flex:1}}>

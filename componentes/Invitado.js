@@ -37,12 +37,12 @@ const Invitadoo = ({ invitado }) => {
   };
 
     return ( 
-        <View style={{borderStyle:'solid', borderWidth:10, borderColor:'green', flex:1}}>
+        <View style={{borderStyle:'solid', borderWidth:5, borderColor:'black',flex:1}}>
             <View>
                 <Text style={{textAlign:'center', fontWeight:'bold', fontSize:15}}>{apellido} {nombre}</Text>
                 <Text style={{textAlign:'center', fontWeight:'bold', fontSize:25}}>{dni}</Text>
             </View>
-            <View>
+            <View style={{padding:20}}>
                 <TouchableOpacity onPress={() => editarPresente(_id)}>
                     <Text style={{ backgroundColor:  invitado.presente ? "green" : "red", textAlign:'center', color:'white', fontSize:20 }}>
                       {invitado.presente? "Presente" : "Ausente"}

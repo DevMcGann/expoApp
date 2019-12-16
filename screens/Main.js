@@ -20,15 +20,15 @@ const Main = ({navigation}) => {
             </View>
             
             <View style={{padding: 20}}>
-                <TouchableOpacity  onPress={()=> navigation.navigate('NuevoScreen2')} style={{marginBottom:25, marginTop:25, backgroundColor:'green'}}>
+                <TouchableOpacity  onPress={()=> navigation.navigate('NuevoScreen2')} style={{marginBottom:25, marginTop:25, backgroundColor:'green', borderRadius:50}}>
                     <Text style={{textAlign:'center', color:'white', fontSize:35}}>Nuevo Invitado</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity  onPress={()=> navigation.navigate('BuscarScreen')} style={{ backgroundColor:'green'}}>
+                <TouchableOpacity  onPress={()=> navigation.navigate('BuscarScreen')} style={{ backgroundColor:'green', borderRadius:50}}>
                     <Text style={{textAlign:'center', color:'white', fontSize:35}}>Buscar DNI</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity  onPress={()=> navigation.navigate('Listado')} style={{marginTop:25, backgroundColor:'green'}}>
+                <TouchableOpacity  onPress={()=> navigation.navigate('Listado')} style={{marginTop:25, backgroundColor:'green', borderRadius:50}}>
                     <Text style={{textAlign:'center', color:'white', fontSize:35}}>Ver Listado</Text>
                 </TouchableOpacity>
             </View>

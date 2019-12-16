@@ -114,8 +114,8 @@ const BuscarScreen = () => {
                     {hayResultado ? invitado.dni : "Dni"}
                 </Text>
                
-               <View  style={{ backgroundColor: invitado.presente ? "green" : "red", flex:.2,  justifyContent:'space-between', padding:20 }} >
-                    <Button  onPress={() => eliminarInvitado(invitado._id)} title="Eliminar Invitado"/>
+               <View  style={{ backgroundColor: invitado.presente ? "green" : "red", flex:.3,  justifyContent:'space-between', padding:20 }} >
+                    <Button  onPress={() => eliminarInvitado(invitado._id)} title="Eliminar Invitado" style={{marginBottom:15}}/>
                     <Button onPress={() => editarPresente(invitado._id)} title={invitado.presente ? "Presente" : "Ausente"} />
                 </View>
             </View>
