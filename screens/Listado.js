@@ -40,7 +40,7 @@ const Listado = () => {
 
     return ( 
         <ScrollView style={{flex:1}}>
-        <View style={{flex:1}}>
+        <View style={{flex:1, padding:30}}>
             {invitados.map(invitado => ( 
                     <Invitado
                         key ={invitado._id}

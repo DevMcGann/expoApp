@@ -16,6 +16,7 @@ const BuscarScreen = () => {
     //query a la api
     const consultarAPI = async () =>{
         try {
+            //Ineficiente, debería hacer query al backend directamente con los datos requeridos
             const invitadosConsulta = await clienteAxios.get('/invitados')  
             setInvitados(invitadosConsulta.data);    
         } catch (error) {
@@ -63,7 +64,11 @@ const BuscarScreen = () => {
     const eliminarInvitado = idInvitado => {
         try {
             clienteAxios.delete(`/invitados/${idInvitado}`)
-            alert("invitado Eliminado")    
+            alert("invitado Eliminado")  
+            setBuscarDni("")
+            setInvitado({})
+            setHayResultado(false)  
+            
         } catch (error) {
             alert("Error al eliminar")
         }
@@ -81,7 +86,10 @@ const BuscarScreen = () => {
               };
               await clienteAxios.delete(`/invitados/${idInvitado}`);
               await clienteAxios.post("/nuevo_invitado", seleccionado);
-              alert("Invitado marcado como Presente!")    
+              alert("Invitado marcado como Presente!")   
+              setBuscarDni("")
+             setInvitado({})
+             setHayResultado(false) 
         } catch (error) {
             alert("Error al marcar Invitado como Presente")
         }
@@ -93,9 +101,10 @@ const BuscarScreen = () => {
 
 
     return ( 
-        <View style={{flex:1}}>
+        <View style={{flex:1, marginTop:40}}>
             <View>
-                <Text style={{textAlign:'center', fontSize:30, fontWeight:'bold', marginBottom:25}}>Buscar por DNI</Text>
+                <Text style={{textAlign:'center', fontSize:30, fontWeight:'bold',
+                 marginBottom:25,textDecorationLine: 'underline'}}>Buscar por DNI</Text>
             </View>
 
             <View>
@@ -105,16 +114,16 @@ const BuscarScreen = () => {
             </View>
 
            {hayResultado ? 
-           <View style={{flex:1}}>
-                <Text style={{textAlign:'center', fontSize:25, marginBottom:20}}>
-                    {hayResultado==true ? invitado.nombre : "nombre"} - {hayResultado==true ? invitado.apellido : "apellido"}
+           <View style={{flex:1, marginTop:50}}>
+                <Text style={{textAlign:'center', fontSize:20, marginBottom:20, fontWeight:'bold', width:'100%'}}>
+                    {hayResultado==true ?  invitado.nombre : "nombre"} {hayResultado==true ? invitado.apellido : "apellido"}
                 </Text>
 
                 <Text style={{textAlign:'center', fontSize:25, marginBottom:20, color:'purple', fontWeight:'bold'}}>
-                    {hayResultado ? invitado.dni : "Dni"}
+                    {hayResultado ? "DNI " + invitado.dni : "Dni"}
                 </Text>
                
-               <View  style={{ backgroundColor: invitado.presente ? "green" : "red", flex:.3,  justifyContent:'space-between', padding:20 }} >
+               <View  style={{  flex:.3,  justifyContent:'space-between', padding:30, marginTop:30 }} >
                     <Button  onPress={() => eliminarInvitado(invitado._id)} title="Eliminar Invitado" style={{marginBottom:15}}/>
                     <Button onPress={() => editarPresente(invitado._id)} title={invitado.presente ? "Presente" : "Ausente"} />
                 </View>
