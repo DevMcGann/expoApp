@@ -39,6 +39,8 @@ const Listado = () => {
 
 
     return ( 
+         /*Error de Junior... Debería ser una Flatlist,  mucho más performante que traer
+         Toda la lista y renderizarla completa.*/
         <ScrollView style={{flex:1}}>
         <View style={{flex:1, padding:30}}>
             {invitados.map(invitado => ( 
